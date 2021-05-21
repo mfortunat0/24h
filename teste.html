@@ -1,0 +1,111 @@
+<html>
+    <head>
+        <title>Hora</title>
+        <link rel="shortcut icon" href="img/24h.png">
+        <style type="text/css">
+            @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap");
+
+            .container {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            #clock {
+                display: flex;
+                flex-direction: row;
+            }
+
+            #h,
+            #m,
+            #s,
+            .span {
+                color: #000000;
+                font-size: 14vh;
+                font-family: "Orbitron", sans-serif;
+                padding: 2vh;
+            }
+            .span1 {
+                font-size: 5vh;
+                font-family: "Orbitron", sans-serif;
+                padding: 2vh;
+            }
+            .span2 {
+                font-size: 15vh;
+                font-family: "Orbitron", sans-serif;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+        	<div class="span2">
+	        <script language="javascript">
+				d = new Date();
+				hour = d.getHours();
+				if(hour < 5)
+				{
+				   document.write("Boa noite");
+				}
+				else
+				if(hour < 8)
+				{
+				   document.write("Bom dia");
+				}
+				else
+				if(hour < 12)
+				{
+				   document.write("Bom dia!");
+				}
+				else
+				if(hour < 18)
+				{
+				   document.write("Boa tarde");
+				}
+				else
+				{
+				   document.write("Boa noite");
+				}
+	        </script>
+	    	</div>
+            <div id="clock">
+                <div id="h"></div>
+                <div class="span">:</div>
+                <div id="m"></div>
+                <div class="span">:</div>
+                <div id="s"></div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            window.onload = displayClock();
+            window.onload = displayDates();
+
+            function displayClock() {
+                var d = new Date();
+                var hour = d.getHours();
+                var minute = d.getMinutes();
+                var second = d.getSeconds();
+
+                if (hour < 10) {
+                    document.getElementById("h").innerHTML = "0" + hour;
+                } else {
+                    document.getElementById("h").innerHTML = hour;
+                }
+
+                if (minute < 10) {
+                    document.getElementById("m").innerHTML = "0" + minute;
+                } else {
+                    document.getElementById("m").innerHTML = minute;
+                }
+
+                if (second < 10) {
+                    document.getElementById("s").innerHTML = "0" + second;
+                } else {
+                    document.getElementById("s").innerHTML = second;
+                }
+                window.setInterval(displayClock, 1000);
+            }
+        </script>
+    </body>
+</html>
