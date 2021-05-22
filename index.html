@@ -1,110 +1,152 @@
 <html>
-    <head>
-        <title>Hora</title>
-        <link rel="shortcut icon" href="img/24h.png">
-        <style type="text/css">
-            @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap");
+  <head>
+    <title>Hora</title>
+    <link rel="shortcut icon" href="img/24h.png" />
+    <style type="text/css">
+      @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap");
+      * {
+        transition: all 0.3s;
+      }
 
-            .container {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
-            #clock {
-                display: flex;
-                flex-direction: row;
-            }
+      body {
+        background-color: #fff;
+      }
 
-            #h,
-            #m,
-            #s,
-            .span {
-                color: #000000;
-                font-size: 14vh;
-                font-family: "Orbitron", sans-serif;
-                padding: 2vh;
-            }
-            .span1 {
-                font-size: 5vh;
-                font-family: "Orbitron", sans-serif;
-                padding: 2vh;
-            }
-            .span2 {
-                font-size: 15vh;
-                font-family: "Orbitron", sans-serif;
-                text-align: center;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-        	<div class="span2">
-	        <script language="javascript">
-				d = new Date();
-				hour = d.getHours();
-				if(hour < 5)
-				{
-				   document.write("Boa noite");
-				}
-				else
-				if(hour < 8)
-				{
-				   document.write("Bom dia");
-				}
-				else
-				if(hour < 12)
-				{
-				   document.write("Bom dia!");
-				}
-				else
-				if(hour < 18)
-				{
-				   document.write("Boa tarde");
-				}
-				else
-				{
-				   document.write("Boa noite");
-				}
-	        </script>
-	    	</div>
-            <div id="clock">
-                <div id="h"></div>
-                <div class="span">:</div>
-                <div id="m"></div>
-                <div class="span">:</div>
-                <div id="s"></div>
-            </div>
-        </div>
+      .container {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20vh;
+      }
+      #clock {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
 
-        <script type="text/javascript">
-            window.onload = displayClock();
-
-            function displayClock() {
-                var d = new Date();
-                var hour = d.getHours();
-                var minute = d.getMinutes();
-                var second = d.getSeconds();
-
-                if (hour < 10) {
-                    document.getElementById("h").innerHTML = "0" + hour;
-                } else {
-                    document.getElementById("h").innerHTML = hour;
-                }
-
-                if (minute < 10) {
-                    document.getElementById("m").innerHTML = "0" + minute;
-                } else {
-                    document.getElementById("m").innerHTML = minute;
-                }
-
-                if (second < 10) {
-                    document.getElementById("s").innerHTML = "0" + second;
-                } else {
-                    document.getElementById("s").innerHTML = second;
-                }
-                window.setInterval(displayClock, 1000);
-            }
+      .h,
+      .m,
+      .s,
+      .span {
+        color: #000000;
+        font-size: 14vh;
+        font-family: "Orbitron", sans-serif;
+        padding: 2vh;
+      }
+      .span1 {
+        font-size: 5vh;
+        font-family: "Orbitron", sans-serif;
+        padding: 2vh;
+      }
+      .span2 {
+        font-size: 15vh;
+        font-family: "Orbitron", sans-serif;
+        text-align: center;
+      }
+      .ButtonContainer {
+        display: flex;
+        justify-content: center;
+        margin-top: 2vh;
+      }
+      button {
+        font-size: 1.5rem;
+        padding: 10px;
+        border: unset;
+        outline: unset;
+        cursor: pointer;
+        border-radius: 4px;
+        font-family: "Orbitron", sans-serif;
+        background-color: #303841;
+        color: white;
+      }
+      .BodyDark {
+        background-color: #303841;
+        color: #fff;
+      }
+      .ButtonDark {
+        background-color: #f1f1f1;
+        color: black;
+      }
+      .SpanDark {
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="span2">
+        <script language="javascript">
+          d = new Date();
+          hour = d.getHours();
+          if (hour < 5) {
+            document.write("Boa noite");
+          } else if (hour < 8) {
+            document.write("Bom dia");
+          } else if (hour < 12) {
+            document.write("Bom dia!");
+          } else if (hour < 18) {
+            document.write("Boa tarde");
+          } else {
+            document.write("Boa noite");
+          }
         </script>
-    </body>
+      </div>
+      <div id="clock">
+        <div class="h"></div>
+        <div class="span">:</div>
+        <div class="m"></div>
+        <div class="span">:</div>
+        <div class="s"></div>
+      </div>
+    </div>
+    <div class="ButtonContainer">
+      <button onclick="switchTheme()">Go Dark</button>
+    </div>
+
+    <script type="text/javascript">
+      window.onload = displayClock();
+
+      function displayClock() {
+        var d = new Date();
+        var hour = d.getHours();
+        var minute = d.getMinutes();
+        var second = d.getSeconds();
+
+        if (hour < 10) {
+          document.querySelector(".h").innerHTML = "0" + hour;
+        } else {
+          document.querySelector(".h").innerHTML = hour;
+        }
+
+        if (minute < 10) {
+          document.querySelector(".m").innerHTML = "0" + minute;
+        } else {
+          document.querySelector(".m").innerHTML = minute;
+        }
+
+        if (second < 10) {
+          document.querySelector(".s").innerHTML = "0" + second;
+        } else {
+          document.querySelector(".s").innerHTML = second;
+        }
+        window.setInterval(displayClock, 1000);
+      }
+
+      function switchTheme() {
+        const button = document.querySelector(".ButtonContainer button");
+        const body = document.querySelector("body");
+        const spans = document.querySelectorAll(".h,.m,.s,.span");
+        if (button.innerHTML === "Go Dark") {
+          body.classList.add("BodyDark");
+          button.classList.add("ButtonDark");
+          button.innerHTML = "Go Light";
+          spans.forEach((span) => span.classList.add("SpanDark"));
+        } else {
+          body.classList.remove("BodyDark");
+          button.classList.remove("ButtonDark");
+          button.innerHTML = "Go Dark";
+          spans.forEach((span) => span.classList.remove("SpanDark"));
+        }
+      }
+    </script>
+  </body>
 </html>
